@@ -1,0 +1,87 @@
+.input-section {
+    margin: 20px 0;
+  
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    input {
+      width: 80%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  
+  .current-node, .queue-section, .visited-section {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .current-node span {
+    color: #ff9800; /* Highlight current node */
+  }
+  
+  .queue {
+    display: flex;
+    justify-content: center;
+  
+    span {
+      margin: 5px;
+      padding: 10px;
+      background-color: #00bcd4;
+      color: white;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  }
+  
+  .visited {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  
+    span {
+      margin: 5px;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+  }
+  
+  .result-section {
+    margin-top: 20px;
+  
+    p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: green;
+    }
+  }
+  

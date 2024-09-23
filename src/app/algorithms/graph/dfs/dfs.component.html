@@ -1,0 +1,47 @@
+<h2>DFS Visualization</h2>
+
+<div class="input-section">
+  <label for="graph-input">Enter the graph (Adjacency list format):</label>
+  <input
+    id="graph-input"
+    type="text"
+    [(ngModel)]="graphInput"
+    placeholder="e.g., A: B, C; B: D, E; C: F; D: ; E: ; F: "
+    [disabled]="dfsComplete"
+  />
+</div>
+
+<div class="input-section">
+  <label for="start-node">Enter the starting node:</label>
+  <input
+    id="start-node"
+    type="text"
+    [(ngModel)]="startNode"
+    placeholder="e.g., A"
+    [disabled]="dfsComplete"
+  />
+</div>
+
+<button (click)="initializeDFS()" [disabled]="dfsComplete">Start DFS</button>
+
+<div *ngIf="graph && getGraphKeys().length > 0">
+  <h3>Graph:</h3>
+  <h4>Node: Child Nodes</h4>
+  <div *ngFor="let node of getGraphKeys()">
+    <strong>{{ node }}: </strong>{{ graph[node].join(', ') }}
+  </div>
+
+  <div class="current-step">
+    <p>{{ dfsSteps[dfsSteps.length - 1] }}</p>
+  </div>
+
+  <div class="controls" *ngIf="!dfsComplete">
+    <button (click)="nextStep()">Next Step</button>
+  </div>
+
+  <div *ngIf="dfsComplete" class="result-section">
+    <h3>Traversal Result:</h3>
+    <p>Visited nodes: {{ visited.join(', ') }}</p>
+    <button (click)="resetDFS()">Reset</button>
+  </div>
+</div>

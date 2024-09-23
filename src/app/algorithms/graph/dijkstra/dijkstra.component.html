@@ -1,0 +1,66 @@
+<h2>Dijkstra's Algorithm Visualization</h2>
+
+<div class="input-section">
+  <label for="graph-input">Enter the graph (Adjacency list with weights):</label>
+  <input
+    id="graph-input"
+    type="text"
+    [(ngModel)]="graphInput"
+    placeholder="e.g., A: B,5; C,3; B: D,1; C: D,7"
+    [disabled]="dijkstraComplete"
+  />
+</div>
+
+<div class="input-section">
+  <label for="start-node">Enter the starting node:</label>
+  <input
+    id="start-node"
+    type="text"
+    [(ngModel)]="startNode"
+    placeholder="e.g., A"
+    [disabled]="dijkstraComplete"
+  />
+</div>
+
+<button (click)="initializeDijkstra()" [disabled]="dijkstraComplete">Start Dijkstra's Algorithm</button>
+
+<!-- Display Graph -->
+<div *ngIf="graph && getGraphKeys().length > 0">
+  <h3>Graph:</h3>
+  <div *ngFor="let node of getGraphKeys()">
+    <strong>{{ node }}: </strong>{{ getNeighborsForDisplay(node) }}
+  </div>
+
+  <!-- Current Node -->
+  <div *ngIf="currentNode !== null" class="current-node">
+    <h3>Current Node: <span>{{ currentNode }}</span></h3>
+  </div>
+
+  <!-- Display Distances -->
+  <div class="distances-section">
+    <h3>Current Distances:</h3>
+    <div class="distances">
+      <span *ngFor="let node of getGraphKeys()">
+        {{ node }}: {{ displayDistance(node) }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Display Visited Nodes -->
+  <div class="visited-section">
+    <h3>Visited Nodes:</h3>
+    <div class="visited">
+      <span *ngFor="let node of visited">{{ node }}</span>
+    </div>
+  </div>
+
+  <div class="controls" *ngIf="!dijkstraComplete">
+    <button (click)="nextStep()">Next Step</button>
+  </div>
+
+  <div *ngIf="dijkstraComplete" class="result-section">
+    <h3>Dijkstra's Algorithm Complete!</h3>
+    <p>Final distances from {{ startNode }}: {{ distances | json }}</p>
+    <button (click)="resetDijkstra()">Reset</button>
+  </div>
+</div>

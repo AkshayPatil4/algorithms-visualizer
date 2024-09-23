@@ -1,0 +1,64 @@
+<h2>BFS Visualization</h2>
+
+<div class="input-section">
+  <label for="graph-input">Enter the graph (Adjacency list format):</label>
+  <input
+    id="graph-input"
+    type="text"
+    [(ngModel)]="graphInput"
+    placeholder="e.g., A: B, C; B: D, E; C: F; D: ; E: ; F: "
+    [disabled]="bfsComplete"
+  />
+</div>
+
+<div class="input-section">
+  <label for="start-node">Enter the starting node:</label>
+  <input
+    id="start-node"
+    type="text"
+    [(ngModel)]="startNode"
+    placeholder="e.g., A"
+    [disabled]="bfsComplete"
+  />
+</div>
+
+<button (click)="initializeBFS()" [disabled]="bfsComplete">Start BFS</button>
+
+<!-- Display Graph -->
+<div *ngIf="graph && getGraphKeys().length > 0">
+  <h3>Graph:</h3>
+  <div *ngFor="let node of getGraphKeys()">
+    <strong>{{ node }}: </strong>{{ graph[node].join(', ') }}
+  </div>
+
+  <!-- Current Node -->
+  <div *ngIf="currentNode !== null" class="current-node">
+    <h3>Current Node Being Visited: <span>{{ currentNode }}</span></h3>
+  </div>
+
+  <!-- Display Queue -->
+  <div *ngIf="queue.length > 0" class="queue-section">
+    <h3>Nodes in Queue: </h3>
+    <div class="queue">
+      <span *ngFor="let node of queue">{{ node }}</span>
+    </div>
+  </div>
+
+  <!-- Display Visited Nodes -->
+  <div class="visited-section">
+    <h3>Visited Nodes:</h3>
+    <div class="visited">
+      <span *ngFor="let node of visited">{{ node }}</span>
+    </div>
+  </div>
+
+  <div class="controls" *ngIf="!bfsComplete">
+    <button (click)="nextStep()">Next Step</button>
+  </div>
+
+  <div *ngIf="bfsComplete" class="result-section">
+    <h3>Traversal Complete!</h3>
+    <p>Final order of visited nodes: {{ visited.join(', ') }}</p>
+    <button (click)="resetBFS()">Reset</button>
+  </div>
+</div>

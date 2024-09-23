@@ -1,0 +1,55 @@
+<h2>Binary Search Visualization</h2>
+
+<div class="input-section">
+  <label for="array-input">Enter numbers (comma-separated):</label>
+  <input
+    id="array-input"
+    type="text"
+    [(ngModel)]="inputArray"
+    placeholder="e.g., 1, 3, 5, 7, 9, 11"
+    [disabled]="searchComplete"
+  />
+</div>
+
+<div class="input-section">
+  <label for="target-input">Enter the target number to search:</label>
+  <input
+    id="target-input"
+    type="number"
+    [(ngModel)]="target"
+    placeholder="e.g., 7"
+    [disabled]="searchComplete"
+  />
+</div>
+
+<button (click)="initializeSearch()" [disabled]="searchComplete">Start Search</button>
+
+<div *ngIf="array.length > 0">
+  <h3>Array:</h3>
+  <div class="array">
+    <span
+      *ngFor="let num of array; let i = index"
+      [ngClass]="{
+        low: i === low,
+        mid: i === mid,
+        high: i === high
+      }"
+    >
+      {{ num }}
+    </span>
+  </div>
+
+  <div class="current-step">
+    <p>{{ currentStep }}</p>
+  </div>
+
+  <div class="controls" *ngIf="!searchComplete">
+    <button (click)="nextStep()">Next Step</button>
+  </div>
+
+  <div class="result-section" *ngIf="searchComplete">
+    <h3>Result:</h3>
+    <p>{{ searchResult }}</p>
+    <button (click)="resetSearch()">Reset</button>
+  </div>
+</div>

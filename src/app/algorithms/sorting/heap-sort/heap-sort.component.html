@@ -1,0 +1,27 @@
+<h2>{{ title }}</h2>
+
+<div class="input-section">
+  <label for="array-input">Enter numbers separated by commas:</label>
+  <input
+    id="array-input"
+    type="text"
+    [(ngModel)]="inputArray"
+    placeholder="e.g., 34, 7, 23, 32, 5, 62"
+  />
+  <button (click)="startHeapSort()">Start Heap Sort</button>
+</div>
+
+<!-- Visualize the heap sort process -->
+<div class="visualization-section">
+  <h3>Heap Sort Steps:</h3>
+  <div *ngIf="steps.length === 0">No steps to show. Start the sort!</div>
+  <div *ngFor="let step of steps" class="step">
+    {{ step }}
+  </div>
+</div>
+
+<!-- Final sorted array -->
+<div class="output-section" *ngIf="sortedArray.length">
+  <h3>Final Sorted Array:</h3>
+  <p>{{ sortedArray.join(', ') }}</p>
+</div>

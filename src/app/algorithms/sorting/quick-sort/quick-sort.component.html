@@ -1,0 +1,27 @@
+<h2>{{ title }}</h2>
+
+<div class="input-section">
+  <label for="array-input">Enter numbers separated by commas:</label>
+  <input
+    id="array-input"
+    type="text"
+    [(ngModel)]="inputArray"
+    placeholder="e.g., 34, 7, 23, 32, 5, 62"
+    [disabled]="sorting"
+  />
+  <button (click)="sortArray()" [disabled]="sorting">Sort</button>
+</div>
+
+<div class="visualization-section">
+  <div class="bar-container">
+    <div
+      *ngFor="let num of array; let i = index"
+      class="bar"
+      [style.height.px]="num * 5" 
+      [style.backgroundColor]="sorting ? '#007bff' : '#4CAF50'"
+      [style.transition]="'height 0.3s ease'"
+    >
+      {{ num }}
+    </div>
+  </div>
+</div>

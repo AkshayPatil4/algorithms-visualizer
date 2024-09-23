@@ -1,0 +1,82 @@
+.input-section {
+    margin: 20px 0;
+  
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    input {
+      width: 80%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  
+  .array {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  
+    span {
+      padding: 10px;
+      margin: 5px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 1.2rem;
+      width: 40px;
+      text-align: center;
+    }
+  
+    .low {
+      background-color: #ffcc00;
+    }
+  
+    .mid {
+      background-color: #00ccff;
+    }
+  
+    .high {
+      background-color: #ff6666;
+    }
+  }
+  
+  .current-step {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .result-section {
+    margin-top: 20px;
+  
+    p {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: green;
+    }
+  }
+  
